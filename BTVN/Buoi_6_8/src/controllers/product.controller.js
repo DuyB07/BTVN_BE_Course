@@ -25,7 +25,7 @@ export const getProductById = async (req, res, next) => {
     }
 }
 
-export const createProductToDB = async (req, res, next) => {
+export const createProduct = async (req, res, next) => {
     try {
         const { name, price, stock, category_id } = req.body;
 
@@ -33,7 +33,7 @@ export const createProductToDB = async (req, res, next) => {
 
         return res.status(201).json({
             success: true,
-            data: product,
+            data: result,
             /*{
                 id: result.insertId,
                 name,
@@ -46,3 +46,34 @@ export const createProductToDB = async (req, res, next) => {
         next(err);
     }
 }
+
+export const updateProduct = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const product = await productService.updateProduct(id, req.body);
+
+        return res.status(200).json({
+            success: true,
+            message: "Product updated successfully",
+            data: product
+        });
+    } catch (err) {
+        next(err);
+    }
+};
+
+export const deleteProduct = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        await productService.deleteProduct(id);
+
+        return res.status(200).json({
+            success: true,
+            message: "Product deleted successfully"
+        });
+    } catch (err) {
+        next(err);
+    }
+};

@@ -8,8 +8,8 @@ export const getUsers = async (req, res, next) => {
       success: true,
       data: users,
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -21,8 +21,8 @@ export const getUserById = async (req, res, next) => {
       success: true,
       data: user,
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };
 
@@ -35,7 +35,7 @@ export const createUser = async (req, res, next) => {
       message: 'Tạo tài khoản thành công',
       data: newUser,
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };

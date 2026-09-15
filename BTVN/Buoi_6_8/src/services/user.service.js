@@ -3,7 +3,7 @@ import {
   getUserByIdFromDB,
   getUserByEmailFromDB,
   createUserInDB,
-} from '../repositories/mock.data.js';
+} from '../repositories/user.repository.js';
 
 import { filterActiveUsers, formatUsers, formatUser } from '../utils/user.utils.js';
 
